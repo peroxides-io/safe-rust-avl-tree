@@ -1,3 +1,4 @@
-The aim was to make the code as comprehensible as possible without completely sacrificing efficiency, so there are some things you'll see here that probably don't belong in a proper library implementation of this data structure. To run the project, all that's needed is:
+Implements the same algorithms as the `main` branch, but nodes are `struct`s, and their children are stored as `Option`s instead of sum type variants. Hopefully this elucidates some of the tradeoffs that are made when using this strategy.
+To run the project, all that's needed is:
 
 `cargo run`
