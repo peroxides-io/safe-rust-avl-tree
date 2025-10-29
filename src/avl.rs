@@ -50,6 +50,7 @@ impl<T: Ord> BSTNode<T> {
 
     // Returns true if the element inserts successfully
     fn insert_balanced(self: &mut ChildNode<T>, new_value: T) -> bool {
+        let mut res = true;
         match **self {
             Self::Nil => {
                 **self = Self::new(new_value);
@@ -63,17 +64,17 @@ impl<T: Ord> BSTNode<T> {
                 if new_value == *value {
                     return false; // no-op
                 }
-                if new_value > *value {
-                    right.insert_balanced(new_value);
+                res = if new_value > *value {
+                    right.insert_balanced(new_value)
                 } else {
-                    left.insert_balanced(new_value);
-                }
+                    left.insert_balanced(new_value)
+                };
                 self.update_height();
             }
         }
 
         self.rebalance();
-        true
+        res
     }
 
     // returns true if value was deleted, false if not present
