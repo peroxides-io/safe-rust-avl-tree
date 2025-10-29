@@ -299,3 +299,15 @@ impl<T: Ord> BST<T> {
         deleted
     }
 }
+
+#[test]
+fn test_inserting_duplicate() {
+    let mut bst = BST::new();
+    assert!(bst.insert(1));
+    assert!(!bst.insert(1));
+    let mut bst = BST::new();
+    assert!(bst.insert(1));
+    assert!(bst.insert(2));
+    assert!(bst.insert(3));
+    assert!(!bst.insert(3));
+}
